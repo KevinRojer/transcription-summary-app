@@ -1,0 +1,7 @@
+ffmpeg==7.0
+pytorch==2.2.0
+numpy==1.26.4
+torchvison==0.15.2
+torchaudio==2.1.0
+cmake==3.22.1
+ninja==1.10.2
