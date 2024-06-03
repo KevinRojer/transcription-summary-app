@@ -2,20 +2,20 @@ import streamlit as st
 import whisper
 
 
-st.title("Transcribe Meetings")
+st.title("Audio Transcription App")
 
 # upload audio with streamlit
 audio_file = st.file_uploader("Upload audio", type=["wav", "mp3", "m4a"])
 
-@st.cache # Why dow you cache a model?
+@st.cache_resource
 def load_whisper_model():
     model = whisper.load_model("base")
     return model
 
-model = load_whisper_model()
-# if st.sidebar.button("Load Whisper Model"):
-#     model = load_whisper_model()
-#     st.sidebar.success("Whisper model loaded.")
+model = None
+if st.sidebar.button("Load Whisper Model"):
+    model = load_whisper_model()
+    st.sidebar.success("Whisper model loaded.")
 
 if st.sidebar.button("Transcribe Audio"):
     if audio_file is not None:
